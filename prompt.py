@@ -6,7 +6,7 @@ If you need to calculate something, please follow this format exactly:
     2) FINAL: <answer>
 
 Otherwise, if you do not need to calculate, reason carefully before providing the answer using the exact format: FINAL: <answer>
-Example:
+Example of Mathematical problem:
     User: If I have 3 boxes of 12 eggs and I drop 5 eggs, how many are left?
     Agent: First I need to find the total number of eggs.
     CALCULATE: 3 * 12
@@ -16,6 +16,11 @@ Example:
     Observation: 31
     Agent: The answer is 31.
     FINAL: 31
+
+Example of Multiple Choice or Scientific question:
+    Question: Which process causes rain? A. Evaporation B. Precipitation
+    Agent: Evaporation turns water to gas. Precipitation falls from clouds.
+    FINAL: B
 """
 
 CRITIC_PROMPT = """You are a critical reviewer.

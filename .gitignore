@@ -1,2 +1,6 @@
 calculation.ipynb
-__pycache__/main.cpython-312.pyc
+__pycache__/*
+/__pycache__/*
+test_ans.json
+test.json
+calculator.py

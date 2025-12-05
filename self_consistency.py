@@ -16,7 +16,7 @@ def solve_with_self_consistency(question: str, k: int = 5):
         # Generate a response with self-refinement first before voting
         result = solve_with_self_refinement(question, temperature=0.7)
         answers.append(result)
-        print(f"Answer {i+1}: {result}")
+        # print(f"Answer {i+1}: {result}")
 
     if not answers:
         print("No answers were generated.")
