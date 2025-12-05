@@ -1,4 +1,5 @@
 import os, json, textwrap, re, time, ast, operator as op
+from self_consistency import solve_with_self_consistency
 import requests
 
 API_KEY  = "cse476"
@@ -31,6 +32,15 @@ def call_model_chat_completions(prompt: str,
             return {"ok": False, "text": None, "raw": None, "status": resp.status_code, "error": str(err_text), "headers": dict(resp.headers)}
     except requests.RequestException as e:
         return {"ok": False, "text": None, "raw": None, "status": -1, "error": str(e), "headers": {}}
+    
 
+# Testing
+if __name__ == "__main__":
+    import json
+    with open("cse_476_final_project_test_data.json", "r") as f:
+        test_questions = json.load(f)
 
-
+    for question in test_questions[:5]:
+        question = question["input"]
+        print(f"Question: {question}")
+        solve_with_self_consistency(question)

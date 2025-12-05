@@ -18,6 +18,18 @@ Example:
     FINAL: 31
 """
 
+CRITIC_PROMPT = """You are a critical reviewer.
+You will be given a Question, the reasoning path, and final answer.
+Your job is to:
+    1. Check logical flaws in the reasoning, if exist.
+    2. Verify any calculations.
+    3. Ensure the answer format is correct.
+
+If the proposed response is correct, please end your response with the exact format: FINAL: <answer>.
+If it is wrong, provide the CORRECTED answer.
+End your response strictly with: FINAL: <answer>
+"""
+
 import re
 def extract_final_answer(text: str) -> str:
 
