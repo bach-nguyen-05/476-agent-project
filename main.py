@@ -17,7 +17,7 @@ def call_model_chat_completions(prompt: str,
         "messages": [{"role": "system", "content": system},
                      {"role": "user",   "content": prompt}],
         "temperature": temperature,
-        "max_tokens": 128,
+        "max_tokens": 256,
     }
     try:
         resp = requests.post(url, headers=headers, json=payload, timeout=timeout)
@@ -33,7 +33,4 @@ def call_model_chat_completions(prompt: str,
         return {"ok": False, "text": None, "raw": None, "status": -1, "error": str(e), "headers": {}}
 
 
-# Demo usage
-demo_prompt = "What is 17 + 28? Answer with just the number."
-result = call_model_chat_completions(demo_prompt)
-print("MODEL SAYS:", (result["text"] or "").strip())
+

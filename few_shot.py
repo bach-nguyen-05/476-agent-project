@@ -18,10 +18,8 @@ def solve_with_few_shot(question: str):
         print(f"Error: {result['error']}")
         return None
 
-# # --- TEST RUNNER ---
 # if __name__ == "__main__":
 #     import json
-#     # Test 1: Blocksworld (Should trigger Blocksworld Prompt)
 #     with open("cse_476_final_project_test_data.json", "r") as file:
 #         questions = json.load(file)
 #     for i in range(3):

@@ -17,3 +17,19 @@ Example:
     Agent: The answer is 31.
     FINAL: 31
 """
+
+import re
+def extract_final_answer(text: str) -> str:
+
+    # 1. Look for explicit tag defined in our prompt
+    match = re.search(r"FINAL:\s*(.*)", text, re.IGNORECASE)
+    if match:
+        return match.group(1).strip()
+    
+    # 2. Fallback: number extraction if the answer is just a number
+    numbers = re.findall(r"[-+]?\d+(?:\.\d+)?", text)
+    if numbers:
+        return numbers[-1]
+        
+    return "No ans"
+
