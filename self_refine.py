@@ -1,12 +1,12 @@
 import re
-from main import call_model_chat_completions
+from utils import call_model_chat_completions
 from prompt import extract_final_answer, CRITIC_PROMPT, SYSTEM_PROMPT
 
 
 def solve_with_self_refinement(question: str, temperature: float = 0.3):
     # Step 1: Primitive Answer Generation
     # We generate the first draft.
-    print("Step 1 Generating Initial Answer")
+    # print("Step 1 Generating Initial Answer")
     primitive = call_model_chat_completions(
         prompt=question,
         system=SYSTEM_PROMPT,
@@ -16,7 +16,7 @@ def solve_with_self_refinement(question: str, temperature: float = 0.3):
     draft = primitive["text"]
 
     # Step 2: Critique and Refine
-    print("Step 2 Self-Refining")
+    # print("Step 2 Self-Refining")
     
     refinement = f"""
     Original Question: {question}
@@ -31,7 +31,7 @@ def solve_with_self_refinement(question: str, temperature: float = 0.3):
     final_result = call_model_chat_completions(
         prompt=refinement,
         system=CRITIC_PROMPT,
-        temperature=0.0 # Choose the deterministic output
+        temperature=0.3 # Choose the deterministic output
     )
 
     if not final_result["ok"]:
@@ -41,6 +41,6 @@ def solve_with_self_refinement(question: str, temperature: float = 0.3):
     final_text = final_result["text"]
     final_ans = extract_final_answer(final_text)
     # print(refinement)
-    print(f"FINAL ANSWER: {final_ans}\n")
+    # print(f"FINAL ANSWER: {final_ans}\n")
 
     return final_ans

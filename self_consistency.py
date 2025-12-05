@@ -13,15 +13,10 @@ def solve_with_self_consistency(question: str, k: int = 5):
     
     # Run the model k times
     for i in range(k):
+        # Generate a response with self-refinement first before voting
         result = solve_with_self_refinement(question, temperature=0.7)
-        
-        if result["ok"]:
-            ans = result["text"]
-            # Clean and extract the specific answer for voting
-            answers.append(ans)
-            print(f"Answer {i+1}: {ans}")
-        else:
-            print(f"Failed: {result['error']}")
+        answers.append(result)
+        print(f"Answer {i+1}: {result}")
 
     if not answers:
         print("No answers were generated.")
