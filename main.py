@@ -8,7 +8,7 @@ def agent_loop(question: str):
     """
         A simple agent loop that uses self-consistency to answer the question.
     """
-    final_answer = solve_with_self_consistency(question, k=5)
+    final_answer = solve_with_self_consistency(question, k=7)
     return final_answer
 
 # Test the agent loop with sample questions
